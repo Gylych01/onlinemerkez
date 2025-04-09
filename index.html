@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONLINE MERKEZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    header {
+      background-color: #1e293b;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #1e293b;
+        padding-top: 10px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .hero {
+      background: url('img/metro.png') no-repeat center center/cover;
+      text-align: center;
+      padding: 120px 40px;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 41, 59, 0.6);
+      z-index: 0;
+    }
+
+    .hero h2,
+    .hero p,
+    .hero button {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      background-color: #1e293b;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    
+    .pan {
+/*      background: url('C:/Users/User/Documents/metro.png') no-repeat center center/cover; */
+      background-color: #2a0253;  
+      text-align: center;
+      padding: 120px 40px;
+      color: white;
+      position: relative;
+    }
+
+    .pan::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .pan button {
+      background-color: #1e293b;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .cards {
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      background-color: #f8fafc;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 16px;
+    }
+
+    .gallery-container {
+      overflow: hidden;
+      background-color: #f1f5f9;
+      padding: 20px 0;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 10px;
+      animation: scrollGallery 20s linear infinite;
+    }
+
+    .gallery img {
+      height: 200px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    @keyframes scrollGallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+     /* Панель внизу */
+     footer {
+      background-color: #1e293b;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer a {
+      color: #e2e8f0;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ONLINE MERKEZ</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav">
+        <a href="#">Главная</a>
+        <a href="#">Пакет Услуг</a>
+        <a href="#">Сделанные Работы</a>
+        <a href="#">Резерв</a>
+        <a href="#">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Продвижение в СММ, Видео и Боты</h2>
+    <p>Монтаж, Создание сайтов, Автоматизация и маркетинг</p>
+    <a href="https://ya.ru"><button>Отправить заявку</button></a>
+    <button onclick="scrollToCards()">Узнать больше</button>
+  </section>
+
+  <section class="cards" id="cards">
+    <div class="card">
+      <h3>СММ</h3>
+      <p>Интерфейс без лишних деталей для лучшего восприятия.</p>
+    </div>
+    <div class="card" href="#">
+      <h3>ВидеоСёмка и Монтаж</h3>
+      <p>Быстрая загрузка и отзывчивость на всех устройствах.</p>
+    </div>
+    <div class="card" href="#">
+      <h3>Приложения | Вебcайты | Тг Боты</h3>
+      <p>Продуманный UX для разных групп пользователей.</p>
+    </div>
+  </section>
+  <section class="pan" id="pan">
+    <h2>SMM Агентство ONLINE MERKEZ</h2><br/>
+    <p>СММ (SMM) продвижение в социальных сетях от московской студии "SMM-AGENTSTVO" предлагает весь спектр услуг по продвижению и брендингу вашего бизнеса во всех сетях. Каждый проект для нас особенный и уникальный, мы не применяем шаблоны и работаем на результат. 8-ое место в рейтинге Cossa даёт нам право сказать - мы одни из лучших в сфере СММ. После получения вашей заявки, дипломированные специалисты проведут анализ и оценку текущей ситуации, мы составляем стратегию продвижения, согласуем с вами даты и сроки. Цена на рекламную СММ кампанию по выводу вашего бизнеса в топ по Москве и России зависит от множества факторов.</p>
+
+    <p>За каждым проектом закрепляется свой менеджер - это позволяет нам оставаться на связи практически круглосуточно. Работать с СММ Агентством полного цикла удобно - вы гарантированно получаете оговоренный результат, а цена всегда останется такой же - как в договоре, без скрытых платежей. Мы не сторонники искусственных накруток, ботов, офферов. Только качественный трафик с постоянной работой над стоимостью заявки. Закажите СММ продвижение в нашем SMM-Агентстве прямо сейчас, ведь наша компания занимает топы рейтинга среди студий в Москве и России.</p>
+   
+  </section>
+<br/>
+  <h2 align="center">Наши Партнёры</h2>
+
+  <br/>
+
+  <section class="gallery-container">
+    <div class="gallery">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwBB7RvdwfGE1fxof5P-LIA4PoBub4WKz_sQ&s" alt="Галерея 1">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL3WO3pVJR2kdeD9yR2df2Q8HXYNPhdOpaCK1Q6BMR5Mg71l2_2KNE64_wqIAM6ACJ6aY&usqp=CAU" alt="Галерея 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVN30hNUoxXxmq3rmX0Hk_mh1Rz4SZOFpj1g&s" alt="Галерея 3">
+      <img src="https://foni.papik.pro/uploads/posts/2024-10/foni-papik-pro-d2dt-p-kartinki-brend-na-prozrachnom-fone-2.png" alt="Галерея 4">
+      <img src="https://gas-kvas.com/grafic/uploads/posts/2024-01/gas-kvas-com-p-logotip-puma-na-prozrachnom-fone-30.png" alt="Галерея 1">
+      <img src="https://logowiks.com/wp-content/uploads/2019/10/starbuks-logo.png" alt="Галерея 2">
+      <img src="https://www.sostav.ru/images/news/2018/03/19/mbnarkj1.jpg" alt="Галерея 3">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzl9yQ8HDBriTzW9FcozY2ALsG0i_bDHPEbLrh8YfalecaFfnkx6grut0PHVFBGgeZNeY&usqp=CAU" alt="Галерея 4">
+    </div>
+  </section>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+    <!-- Панель внизу страницы -->
+  <footer>
+    <p>&copy; 2025 @onlinemerkez | <a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a></p>
+  </footer>
+
+  <script>
+    function scrollToCards() {
+      document.getElementById('cards').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('active');
+    }
+    </script>
+  </script>
+</body>
+</html>
